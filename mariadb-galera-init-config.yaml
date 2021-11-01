@@ -1,0 +1,12 @@
+extraInitContainers:
+- name: initcontainer
+  image: ubuntu
+  command: ["/bin/bash","-c"]
+  args:
+    - "ls /bin"
+    # - 'su -c "mkdir -p /bitnami/mariadb" -'
+    # - "apt-get install sudo && sudo mkdir -p /bitnami/mariadb"
+  # command: ["/bin/chown", "-R"]
+  # args:
+  #   - 1001:1001
+  #   - "/"

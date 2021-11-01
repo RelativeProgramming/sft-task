@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: writer
+  labels:
+    app: writer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: writer
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: writer
+    spec:
+      containers:
+      - image: localhost:5000/sft-writer:latest  # imageLocationAtRegistry
+        name: writer
+        command: ["python"]
+        args: ["-u", "writer.py"]
+        env:
+        - name: DB_HOST
+          value: "my-release-mariadb-galera.default.svc.cluster.local"
+        - name: DB_PORT
+          value: "3306"
